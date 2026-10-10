@@ -16,22 +16,26 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.thatrandomhumanoid.mine_eternal.item.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(mine_eternal.MODID)
-public class mine_eternal
+@Mod(MineEternal.MODID)
+public class MineEternal
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "mine_eternal";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public mine_eternal(FMLJavaModLoadingContext context)
+    public MineEternal(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
 
         // Register the commonSetup method for modloading
+
+        ModItems.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         
 
